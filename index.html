@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Surprise For Oudy 💌</title>
+  
+  <!-- الخطوط المستخدمة للتصميم الأنيق -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&family=Cairo:wght@400;600;700;800&family=Inter:wght@200;300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── الألوان الأساسية والمتغيرات ─── */
+    :root {
+      --cream:      #faf7f4;
+      --offwhite:   #f5f0eb;
+      --sand:       #e8ddd4;
+      --mist:       #d4c4b8;
+      --warm-gray:  #a08878;
+      --taupe:      #7a5a50;
+      --cocoa:      #6b2d3e;
+      --espresso:   #4a1628;
+      --blush:      #e8c5c5;
+      --dusty-rose: #c47a7a;
+      --terracotta: #8b2252;
+      --gold:       #9e3060;
+      --sage:       #a06080;
+      --font-display: 'DM Serif Display', serif;
+      --font-body:    'Cormorant Garamond', serif;
+      --font-sans:    'Lato', sans-serif;
+      --font-ar:      'Cairo', sans-serif;
+      --radius:     20px;
+      --shadow-soft: 0 8px 40px rgba(74,22,40,0.10);
+      --shadow-card: 0 4px 24px rgba(74,22,40,0.13);
+      --transition: 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-ar);
+      background: var(--cream);
+      color: var(--espresso);
+      overflow-x: hidden;
+    }
+
+    /* ─── الصفحات ─── */
+    .page {
+      display: none;
+      min-height: 100vh;
+      animation: fadeIn 0.7s ease forwards;
+    }
+    .page.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════════════════════════════════
+       PAGE 1 — INDEX
+    ═══════════════════════════════════════ */
+    #page-index {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 30%, #f0d0d8aa 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, #e8c0cc88 0%, transparent 70%),
+        var(--cream);
+      position: relative;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    #page-index.active { display: flex; }
+
+    .index-ornament {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .index-ornament::before, .index-ornament::after {
+      content: ''; position: absolute; border-radius: 50%; opacity: 0.12;
+    }
+    .index-ornament::before {
+      width: 500px; height: 500px; top: -150px; right: -150px;
+      background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+    }
+    .index-ornament::after {
+      width: 400px; height: 400px; bottom: -120px; left: -100px;
+      background: radial-gradient(circle, var(--dusty-rose) 0%, transparent 70%);
+    }
+
+    .index-content { position: relative; z-index: 1; max-width: 560px; }
+    .index-eyebrow {
+      font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .index-eyebrow::before, .index-eyebrow::after {
+      content: ''; display: inline-block; width: 40px; height: 1px; background: var(--gold); opacity: 0.6;
+    }
+    .index-title {
+      font-family: var(--font-display); font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1.05; color: var(--espresso); margin-bottom: 10px; font-weight: 400;
+    }
+    .index-title em { font-style: italic; color: var(--terracotta); }
+    .index-subtitle {
+      font-family: var(--font-body); font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      color: var(--taupe); font-style: italic; margin-bottom: 50px; font-weight: 300;
+    }
+
+    .index-btn {
+      display: inline-flex; align-items: center; gap: 12px; padding: 16px 44px;
+      background: var(--espresso); color: var(--cream); border: none; border-radius: 60px;
+      font-family: var(--font-ar); font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: var(--transition); box-shadow: 0 8px 30px rgba(74,22,40,0.25);
+      position: relative; overflow: hidden;
+    }
+    .index-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(74,22,40,0.3); }
+    .btn-arrow { font-size: 1.1rem; transition: transform 0.3s; }
+    .index-btn:hover .btn-arrow { transform: translateX(-4px); }
+
+    /* ═══════════════════════════════════════
+       PAGE 2 — QUIZ & WARNING
+    ═══════════════════════════════════════ */
+    #page-quiz {
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 100vh; padding: 60px 20px;
+      background: radial-gradient(ellipse 70% 50% at 30% 20%, #e8b8c888 0%, transparent 60%), var(--offwhite);
+    }
+    #page-quiz.active { display: flex; }
+
+    .quiz-header { text-align: center; margin-bottom: 30px; }
+    .quiz-header h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 400; }
+    .quiz-header h1 em { color: var(--terracotta); font-style: italic; }
+
+    /* صندوق التحذير */
+    .warning-box {
+      background: rgba(139, 34, 82, 0.05);
+      border: 1px solid rgba(139, 34, 82, 0.2);
+      border-radius: 16px;
+      padding: 24px 30px;
+      margin-bottom: 40px;
+      max-width: 640px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(139, 34, 82, 0.08);
+    }
+    .warning-box h3 {
+      font-family: var(--font-ar);
+      color: var(--terracotta);
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .warning-box p {
+      font-family: var(--font-ar);
+      font-size: 1.05rem;
+      color: var(--espresso);
+      line-height: 1.8;
+      font-weight: 600;
+    }
+
+    .quiz-card {
+      background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-soft);
+      padding: clamp(24px, 5vw, 44px); width: 100%; max-width: 640px; border: 1px solid var(--sand);
+    }
+    .quiz-question { margin-bottom: 36px; }
+    .quiz-question:last-of-type { margin-bottom: 28px; }
+    .question-label { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 6px; }
+    .question-text { font-family: var(--font-ar); font-size: clamp(1.1rem, 2.5vw, 1.25rem); font-weight: 700; color: var(--espresso); margin-bottom: 16px; line-height: 1.5; }
+    .option-list { display: flex; flex-direction: column; gap: 10px; }
+    .option-label { display: flex; align-items: center; gap: 14px; padding: 13px 18px; border-radius: 12px; border: 1.5px solid var(--sand); background: var(--cream); cursor: pointer; font-family: var(--font-ar); font-size: 1.05rem; font-weight: 600; color: var(--cocoa); transition: var(--transition); user-select: none; }
+    .option-label:hover { border-color: var(--gold); background: #f0f3f9; transform: translateX(-4px); }
+    .option-label input[type="radio"] { accent-color: var(--terracotta); width: 17px; height: 17px; flex-shrink: 0; }
+    .option-label input[type="radio"]:checked + span { color: var(--espresso); font-weight: 700; }
+    
+    .quiz-divider { height: 1px; background: var(--sand); margin: 28px 0; }
+    .quiz-btn { display: block; width: 100%; padding: 15px; background: var(--espresso); color: var(--cream); border: none; border-radius: 14px; font-family: var(--font-ar); font-size: 1rem; font-weight: 700; cursor: pointer; transition: var(--transition); box-shadow: 0 6px 20px rgba(74,22,40,0.2); }
+    .quiz-btn:hover { background: var(--cocoa); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(74,22,40,0.28); }
+    
+    /* wrong option highlight */
+    .option-label.wrong-picked { border-color: var(--terracotta) !important; background: #fdf0f3 !important; }
+    .option-label.correct-picked { border-color: var(--sage) !important; background: #fdf0f3 !important; }
+
+    /* ═══════════════════════════════════════
+       PAGE SUCCESS (NEW VIEW AFTER QUIZ)
+    ═══════════════════════════════════════ */
+    #page-success {
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 100vh; padding: 40px 20px;
+      background: var(--cream); text-align: center;
+    }
+    #page-success.active { display: flex; }
+    .success-box {
+      background: #fff; padding: 50px 40px; border-radius: var(--radius);
+      box-shadow: var(--shadow-soft); max-width: 500px; border: 1px solid var(--sand);
+    }
+    .success-box p {
+      font-family: var(--font-ar); font-size: 1.3rem; font-weight: 700;
+      color: var(--espresso); line-height: 1.7; margin-bottom: 30px;
+    }
+    .next-btn {
+      padding: 14px 40px; background: var(--gold); color: #fff; border: none;
+      border-radius: 30px; font-family: var(--font-sans); font-size: 1rem;
+      font-weight: 700; cursor: pointer; transition: var(--transition); letter-spacing: 1px;
+    }
+    .next-btn:hover { background: var(--terracotta); transform: scale(1.05); }
+
+    /* ═══════════════════════════════════════
+       PAGE 3 — MAIN (CELEBRATION)
+    ═══════════════════════════════════════ */
+    #page-main { display: none; background: var(--cream); }
+    #page-main.active { display: block; }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: 420px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center; padding: 80px 24px 70px;
+      background: radial-gradient(ellipse 90% 60% at 50% 40%, #e8b8c8cc 0%, transparent 65%), linear-gradient(160deg, #edf0f7 0%, #d8e0ee 100%);
+      overflow: hidden;
+    }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, var(--mist) 1px, transparent 0); background-size: 36px 36px; opacity: 0.25; }
+    .hero-tag { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; position: relative; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 9vw, 6rem); color: var(--espresso); line-height: 1.05; font-weight: 400; position: relative; }
+    .hero-title em { color: var(--terracotta); font-style: italic; }
+
+    /* ─── COUNTER SECTION ─── */
+    .counter-wrapper {
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .counter-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+      max-width: 600px; width: 100%; direction: ltr; /* Keeping counter LTR */
+    }
+    .counter-box {
+      background: #fff; border: 1px solid var(--sand); border-radius: 18px;
+      padding: 22px 10px; position: relative; overflow: hidden; text-align: center;
+      transition: border-color var(--transition), box-shadow var(--transition), transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(74,22,40,0.05);
+    }
+    .counter-box:hover { border-color: var(--terracotta); transform: translateY(-4px); box-shadow: var(--shadow-card); }
+    .counter-box::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--terracotta)); opacity: 0; transition: opacity var(--transition);
+    }
+    .counter-box:hover::before { opacity: 1; }
+    .counter-box .num {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 400; color: var(--espresso); line-height: 1; display: block;
+    }
+    .counter-box .lbl {
+      font-family: var(--font-sans); font-size: 0.65rem; font-weight: 700;
+      color: var(--taupe); margin-top: 10px; display: block; text-transform: uppercase; letter-spacing: 0.15em;
+    }
+    .flip-anim { animation: counterFlip 0.4s cubic-bezier(0.4, 0, 0.2, 1) both; }
+    @keyframes counterFlip {
+      0%  { transform: translateY(0); opacity: 1; }
+      40% { transform: translateY(-8px); opacity: 0; }
+      60% { transform: translateY(8px); opacity: 0; }
+      100%{ transform: translateY(0); opacity: 1; }
+    }
+
+    /* Gallery */
+    .section-header { text-align: center; padding: 70px 24px 30px; }
+    .section-header .eyebrow { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .section-header h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 3.2rem); color: var(--espresso); font-weight: 400; direction: ltr;}
+    .section-header h2 em { color: var(--terracotta); }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; padding: 0 clamp(18px, 5vw, 60px) 70px; }
+    .photo-card { background: #fff; border-radius: 18px; box-shadow: var(--shadow-card); overflow: hidden; transition: var(--transition); border: 1px solid var(--sand); position: relative; }
+    .photo-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 50px rgba(74,22,40,0.18); }
+    .photo-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: var(--sand); }
+    .photo-card-body { padding: 18px; text-align: right; }
+    .photo-card-caption { font-family: var(--font-ar); font-size: 0.95rem; line-height: 1.7; color: var(--espresso); font-weight: 600; }
+    .photo-card-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--terracotta)); opacity: 0; transition: opacity 0.3s; }
+    .photo-card:hover .photo-card-overlay { opacity: 1; }
+
+    /* Letter section */
+    .letter-section { padding: 70px clamp(18px, 8vw, 100px); background: linear-gradient(135deg, #e8edf7, #d6dcea); position: relative; overflow: hidden; }
+    .letter-section::before { content: '❝'; position: absolute; top: 30px; right: clamp(18px, 5vw, 60px); font-size: clamp(80px, 15vw, 160px); color: var(--mist); font-family: Georgia, serif; line-height: 1; pointer-events: none; }
+    .letter-inner { max-width: 720px; margin: 0 auto; position: relative; }
+    .letter-tag { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; direction:ltr; text-align:right;}
+    .letter-name { font-family: var(--font-ar); font-size: clamp(2rem, 6vw, 3.5rem); color: var(--espresso); font-weight: 800; line-height: 1.1; margin-bottom: 30px; }
+    .letter-body { font-family: var(--font-ar); font-size: clamp(1.1rem, 2.2vw, 1.25rem); line-height: 2; color: var(--cocoa); font-weight: 600; white-space: pre-line; }
+    .letter-signature { margin-top: 40px; font-family: var(--font-ar); font-size: 1.5rem; font-weight: 700; color: var(--terracotta); }
+    .letter-divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--gold), var(--terracotta)); border: none; margin: 24px 0; }
+
+    /* ─── PLAYLIST SECTION ─── */
+    #playlist-section {
+      padding: 90px 24px; display: flex; flex-direction: column; align-items: center; position: relative;
+      background: radial-gradient(ellipse 70% 60% at 20% 50%, rgba(201,169,110,.07) 0%, transparent 55%),
+                  radial-gradient(ellipse 60% 50% at 80% 80%, rgba(192,85,107,.09) 0%, transparent 55%),
+                  linear-gradient(160deg, #0e0a0e 0%, #1a0f14 100%);
+      direction: ltr; /* English UI for the music player */
+    }
+    #playlist-section .playlist-tag { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: rgba(232,160,176,.6); margin-bottom: 16px; }
+    #playlist-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 7vw, 46px); font-weight: 500; color: #fdf8f3; margin-bottom: 8px; text-align: center; }
+    #playlist-section .playlist-sub { font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 2px; color: rgba(232,160,176,.5); margin-bottom: 60px; text-align: center; }
+    #playlist-section .anghami-box {
+      max-width: 420px; width: 100%; background: rgba(253,248,243,.04); border: 1px solid rgba(253,248,243,.1);
+      border-radius: 36px; padding: 52px 44px; text-align: center; backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px); box-shadow: 0 40px 100px rgba(0,0,0,.5), 0 0 0 1px rgba(192,85,107,.06);
+      position: relative; overflow: hidden;
+    }
+    #playlist-section .vinyl {
+      width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 28px;
+      background: radial-gradient(circle at center, #2a1a22 26%, transparent 26%), repeating-radial-gradient(circle at center, #1a0e16 0%, #251420 2%, #1a0e16 4%);
+      box-shadow: 0 10px 40px rgba(0,0,0,.6), 0 0 0 2px rgba(192,85,107,.15);
+      animation: spinVinyl 10s linear infinite paused; position: relative;
+    }
+    #playlist-section .vinyl.playing { animation-play-state: running; }
+    #playlist-section .vinyl::after {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 22px; height: 22px; background: linear-gradient(135deg, var(--dusty-rose), var(--espresso));
+      border-radius: 50%; box-shadow: 0 0 0 4px rgba(192,85,107,.2), 0 0 20px rgba(192,85,107,.3);
+    }
+    @keyframes spinVinyl { to { transform: rotate(360deg); } }
+    #playlist-section .anghami-title { font-family: 'Playfair Display', serif; font-size: 22px; color: #fdf8f3; margin-bottom: 6px; }
+    #playlist-section .anghami-sub { font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 2px; color: rgba(232,160,176,.55); margin-bottom: 36px; }
+    #playlist-section .anghami-btn {
+      display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--gold) 0%, var(--terracotta) 100%);
+      color: #fff; text-decoration: none; padding: 16px 36px; border-radius: 50px; font-size: 15px; font-family: 'Inter', sans-serif;
+      box-shadow: 0 10px 36px rgba(192,85,107,.45); transition: transform .3s, box-shadow .3s;
+    }
+    #playlist-section .anghami-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 50px rgba(192,85,107,.55); }
+    #playlist-section .music-bars { display: flex; align-items: flex-end; gap: 3px; height: 18px; }
+    #playlist-section .music-bars span { width: 3px; background: rgba(255,255,255,.8); border-radius: 2px; animation: barMusic .7s ease-in-out infinite alternate; }
+    #playlist-section .music-bars span:nth-child(1) { height: 6px; animation-delay: 0s; }
+    #playlist-section .music-bars span:nth-child(2) { height: 14px; animation-delay: .12s; }
+    #playlist-section .music-bars span:nth-child(3) { height: 10px; animation-delay: .25s; }
+    #playlist-section .music-bars span:nth-child(4) { height: 18px; animation-delay: .08s; }
+    #playlist-section .music-bars span:nth-child(5) { height: 8px; animation-delay: .2s; }
+    @keyframes barMusic { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
+
+    /* Video section */
+    .video-section { padding: 70px clamp(18px, 5vw, 60px) 90px; text-align: center; background: var(--cream); direction: ltr;}
+    .video-wrapper { margin-top: 36px; display: inline-block; border-radius: 20px; overflow: hidden; box-shadow: 0 16px 50px rgba(74,22,40,0.20); max-width: 260px; width: 100%; border: 3px solid #fff; outline: 1px solid var(--sand); }
+    video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; background: var(--sand); }
+
+    /* Footer */
+    .footer { text-align: center; padding: 30px 20px; font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--warm-gray); border-top: 1px solid var(--sand); direction:ltr;}
+
+    /* Toast Alert */
+    .wrong-toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.85); background: #fff; border: 2px solid var(--terracotta); border-radius: 20px; padding: 30px 40px; text-align: center; box-shadow: 0 20px 60px rgba(74,22,40,0.25); z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease; max-width: 320px; width: 90%; }
+    .wrong-toast.show { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
+    .wrong-toast-emoji { font-size: 3rem; display: block; margin-bottom: 12px; animation: shake 0.4s ease; }
+    @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+    .wrong-toast-text { font-family: var(--font-ar); font-size: 1.2rem; font-weight: 700; color: var(--espresso); line-height: 1.5; }
+    .wrong-toast-close { margin-top: 18px; display: inline-block; padding: 8px 24px; background: var(--espresso); color: var(--cream); border: none; border-radius: 30px; font-family: var(--font-ar); font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: background 0.3s; }
+    .wrong-toast-close:hover { background: var(--terracotta); }
+    .toast-overlay { position: fixed; inset: 0; background: rgba(74,22,40,0.35); z-index: 9998; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .toast-overlay.show { opacity: 1; pointer-events: auto; }
+
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 20px 50px; }
+      .counter-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .letter-section { padding: 50px 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═════════════════════════════════════
+       PAGE 1: INDEX
+  ═════════════════════════════════════ -->
+  <section id="page-index" class="page active">
+    <div class="index-ornament"></div>
+    <div class="index-content">
+      <div class="index-eyebrow">A Special Surprise</div>
+      <h1 class="index-title">For <em>Oudy</em></h1>
+      <p class="index-subtitle">Just because I love you ✨</p>
+      <button class="index-btn" onclick="showPage('page-quiz')">
+        <span>ابدأ الكويز</span>
+        <span class="btn-arrow">←</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════
+       PAGE 2: QUIZ
+  ═════════════════════════════════════ -->
+  <section id="page-quiz" class="page">
+    <div class="quiz-header">
+      <h1><em>Quick Quiz</em> for Oudy!</h1>
+    </div>
+
+    <!-- صندوق التحذير الجديد -->
+    <div class="warning-box">
+      <h3>*تحذيييييرررررر*</h3>
+      <p>نرجو توخي الحذر لانه قد توجد عواقب وخيمة مصاحبة للاختيارات الخاطئة ك اني هنكد عليك لمدة اسبوع او هشتم علي كرستيانو و قد يصاحب هذا اعراض بالغة الخطورة زي ان ليڤل برود الكوكو يزيد اكتر من كتر المشاكل 🤷‍♀️</p>
+    </div>
+
+    <div class="quiz-card">
+      
+      <!-- Q1 -->
+      <div class="quiz-question">
+        <p class="question-label">السؤال الأول</p>
+        <p class="question-text">اكتر حد بتحبه ف الدنيا ؟</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q1" value="wrong" /><span>كرستيانو</span></label>
+          <label class="option-label"><input type="radio" name="q1" value="correct" /><span>نيرمين</span></label>
+          <label class="option-label"><input type="radio" name="q1" value="wrong" /><span>الماحي و حسين و حسام و هلال و بغدادي وفارس ( اسفين للرجالة )</span></label>
+        </div>
+      </div>
+      <div class="quiz-divider"></div>
+
+      <!-- Q2 -->
+      <div class="quiz-question">
+        <p class="question-label">السؤال الثاني</p>
+        <p class="question-text">الاسم البديل لاسمك ( اللي قولتهولك قبل كدا ) ؟</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q2" value="wrong" /><span>CR8</span></label>
+          <label class="option-label"><input type="radio" name="q2" value="correct" /><span>AM8</span></label>
+          <label class="option-label"><input type="radio" name="q2" value="wrong" /><span>الولا كوكو</span></label>
+        </div>
+      </div>
+      <div class="quiz-divider"></div>
+
+      <!-- Q3 -->
+      <div class="quiz-question">
+        <p class="question-label">السؤال الثالث</p>
+        <p class="question-text">ماذا لو حصل مشكلة كبيرة جدا من حد فينا ؟</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q3" value="wrong" /><span>نمشي</span></label>
+          <label class="option-label"><input type="radio" name="q3" value="wrong" /><span>نصلح اللي بيننا بعقل نكمل</span></label>
+          <label class="option-label"><input type="radio" name="q3" value="correct" /><span>نعامل بعض معاملة اليهود و نكمل</span></label>
+        </div>
+      </div>
+      <div class="quiz-divider"></div>
+
+      <!-- Q4 -->
+      <div class="quiz-question">
+        <p class="question-label">السؤال الرابع</p>
+        <p class="question-text">اكتر فاكهة الولا أودي بيحبها ؟</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q4" value="wrong" /><span>مانجة</span></label>
+          <label class="option-label"><input type="radio" name="q4" value="correct" /><span>جوافة</span></label>
+          <label class="option-label"><input type="radio" name="q4" value="wrong" /><span>مشموش</span></label>
+        </div>
+      </div>
+      <div class="quiz-divider"></div>
+
+      <!-- Q5 -->
+      <div class="quiz-question">
+        <p class="question-label">السؤال الخامس</p>
+        <p class="question-text">مكان الولا أودي لاجئ فيه ؟</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q5" value="wrong" /><span>بيتهم</span></label>
+          <label class="option-label"><input type="radio" name="q5" value="wrong" /><span>الشركة</span></label>
+          <label class="option-label"><input type="radio" name="q5" value="correct" /><span>القهوة</span></label>
+        </div>
+      </div>
+      <div class="quiz-divider"></div>
+
+      <!-- Q6 -->
+      <div class="quiz-question">
+        <p class="question-label">السؤال السادس</p>
+        <p class="question-text">لو يوم القيامة بكرة الولا أودي غالبا هيبقا فين ؟</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q6" value="wrong" /><span>الشارع</span></label>
+          <label class="option-label"><input type="radio" name="q6" value="correct" /><span>حجز كورة عشان الريال ميقولوش علينا حاجة</span></label>
+          <label class="option-label"><input type="radio" name="q6" value="wrong" /><span>بيصلي العشا</span></label>
+        </div>
+      </div>
+      <div class="quiz-divider"></div>
+
+      <!-- Q7 -->
+      <div class="quiz-question">
+        <p class="question-label">السؤال السابع</p>
+        <p class="question-text">هل الولا أودي ؟</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q7" value="wrong" /><span>بارد</span></label>
+          <label class="option-label"><input type="radio" name="q7" value="wrong" /><span>يتظاهر بالبرود لعدم توافر حلول اخري</span></label>
+          <label class="option-label"><input type="radio" name="q7" value="correct" /><span>هو لطخ فعلا مش بيتظاهر ولا حاجة</span></label>
+        </div>
+      </div>
+      <div class="quiz-divider"></div>
+
+      <!-- Q8 -->
+      <div class="quiz-question">
+        <p class="question-label">السؤال الثامن</p>
+        <p class="question-text">حمو المرشدي بيمثلك ايه ؟</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q8" value="wrong" /><span>ابن جيهة</span></label>
+          <label class="option-label"><input type="radio" name="q8" value="wrong" /><span>نفس البيئة</span></label>
+          <label class="option-label"><input type="radio" name="q8" value="correct" /><span>شكل كلمة العجمي</span></label>
+        </div>
+      </div>
+      <div class="quiz-divider"></div>
+
+      <!-- Q9 -->
+      <div class="quiz-question">
+        <p class="question-label">السؤال التاسع</p>
+        <p class="question-text">لو اتحولت ل سمكة لمدة يوم؟</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q9" value="wrong" /><span>تعكر صفو ماية البحر</span></label>
+          <label class="option-label"><input type="radio" name="q9" value="correct" /><span>تقول للسمكة اللي تخص دخلي شعرك م الطرحة</span></label>
+          <label class="option-label"><input type="radio" name="q9" value="wrong" /><span>تبقا سمكة لطيفاه اخر تلت اربع حاجات</span></label>
+        </div>
+      </div>
+      <div class="quiz-divider"></div>
+
+      <!-- Q10 -->
+      <div class="quiz-question" style="direction: ltr; text-align: left;">
+        <p class="question-label" style="text-align: left;">السؤال العاشر</p>
+        <p class="question-text" style="font-family: var(--font-sans); font-size: 1.2rem;">if the world was ending, then i wanna be...</p>
+        <div class="option-list">
+          <label class="option-label"><input type="radio" name="q10" value="correct" /><span style="font-family: var(--font-sans);">next to me ya grboo3</span></label>
+          <label class="option-label"><input type="radio" name="q10" value="wrong" /><span style="font-family: var(--font-sans);">playing a match</span></label>
+          <label class="option-label"><input type="radio" name="q10" value="wrong" /><span style="font-family: var(--font-sans);">acting as a freezer</span></label>
+        </div>
+      </div>
+
+      <button class="quiz-btn" onclick="checkAnswers()">تأكيد الإجابات</button>
+      <div id="quiz-result" style="margin-top: 15px; color: var(--terracotta); text-align: center; font-weight: bold;"></div>
+
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════
+       PAGE SUCCESS (NEW VIEW AFTER QUIZ)
+  ═════════════════════════════════════ -->
+  <section id="page-success" class="page">
+    <div class="success-box">
+      <p>و عشان انت جاوبت صح معانا هننتقل لليڤل اللي بعده و امري لله🤙</p>
+      <button class="next-btn" onclick="showPage('page-main')">Next</button>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════
+       PAGE 3: MAIN
+  ═════════════════════════════════════ -->
+  <section id="page-main" class="page">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-tag" style="direction: ltr;">✦ Just for you ✦</div>
+      <h1 class="hero-title" style="direction: ltr;">Hello<br><em>Oudy!</em> ✨</h1>
+    </div>
+
+    <!-- Counter Section -->
+    <div class="section-header">
+      <p class="eyebrow" style="direction: ltr;">✦ our time ✦</p>
+      <h2 style="direction: ltr;">Time <em>together</em></h2>
+    </div>
+    
+    <div class="counter-wrapper">
+      <div class="counter-grid">
+        <div class="counter-box"><span class="num" id="cnt-days">0</span><span class="lbl">Days</span></div>
+        <div class="counter-box"><span class="num" id="cnt-hours">0</span><span class="lbl">Hours</span></div>
+        <div class="counter-box"><span class="num" id="cnt-mins">0</span><span class="lbl">Mins</span></div>
+        <div class="counter-box"><span class="num" id="cnt-secs">0</span><span class="lbl">Secs</span></div>
+      </div>
+    </div>
+
+    <!-- Gallery with Captions -->
+    <div class="section-header" style="padding-top: 40px;">
+      <p class="eyebrow" style="direction: ltr;">✦ memories ✦</p>
+      <h2 style="direction: ltr;">Our <em>Beautiful</em> Moments</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo1.jpg" alt="pic 1" loading="lazy" />
+        <div class="photo-card-body"><p class="photo-card-caption">١- هنبدأ ب اكتر اللحظات احراجا لل أودي لانه اكتشف لاول مرة انه عنده مشاعر و بيحس مش مجرد مهندس عادي</p></div>
+        <div class="photo-card-overlay"></div>
+      </div>
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo2.jpg" alt="pic 2" loading="lazy" />
+        <div class="photo-card-body"><p class="photo-card-caption" style="direction: ltr; text-align: left;">٢ - Looking as fresh as Mo Salah yet ashtr mn Oufa🤙</p></div>
+        <div class="photo-card-overlay"></div>
+      </div>
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo3.jpg" alt="pic 3" loading="lazy" />
+        <div class="photo-card-body"><p class="photo-card-caption">٣- لحظات قليلة تفصلنا عن اخباري ب انه مسافر مع عيلته للمصيف الذي يضم احدي الفتيات اللي امه عايزة تجوزهاله 🤙</p></div>
+        <div class="photo-card-overlay"></div>
+      </div>
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo4.jpg" alt="pic 4" loading="lazy" />
+        <div class="photo-card-body"><p class="photo-card-caption">٤- لحظات قليلة تفصلنا عن اخباري ب انه مسافر مع عيلته للمصيف الذي يضم احدي الفتيات اللي امه عايزة تجوزهاله 🤙</p></div>
+        <div class="photo-card-overlay"></div>
+      </div>
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo5.jpg" alt="pic 5" loading="lazy" />
+        <div class="photo-card-body"><p class="photo-card-caption">٥- عامل نفسه صديق للبيئة و هو والقطة عجنوا بعض بعدها</p></div>
+        <div class="photo-card-overlay"></div>
+      </div>
+      <div class="photo-card">
+        <img class="photo-card-img" src="photo6.jpg" alt="pic 6" loading="lazy" />
+        <div class="photo-card-body"><p class="photo-card-caption">٦- انا فعلا وقتها مكنتش مهتمة ب اروي و لا اميرة ولا انا هبقا ف صف مين علي مين ، و لا فارقلي مين الماحي و يعني اي عيلة تانية ، و شاي اي اللي بيشربه ده ، و يعني اي عجمي احنا هنهزر و يعني ايه امي امي دي ، و اكيد هيخلص فضفضة و همشي و هتبقا فرصة سعيدة و انا مش اسعد   بدأت ب انت حسيت ب ايه ؟  و لحد النهاردة انا لسة مسحولة ف انت حاسس ب ايه ♥️</p></div>
+        <div class="photo-card-overlay"></div>
+      </div>
+    </div>
+
+    <!-- Letter -->
+    <div class="letter-section">
+      <div class="letter-inner">
+        <p class="letter-tag" style="direction: ltr;">✦ FROM MY HEART ✦</p>
+        <h2 class="letter-name">حبيبي <em>اودي</em></h2>
+        <hr class="letter-divider" />
+        <p class="letter-body">خليك عارف ان مستحيل حد يفرق بيننا 
+اني مستحيل اصغرك مهما يحصل مهما تعمل ، اني لسة قد كل وعد قولته ، عمري عمري عمري ما هسمح ان علاقتنا تبوظ ♥️ ان مفيش اي حاجة بيننا اتكسرت و لا انا هسمح ب ده ، و اعرف ان نيرمين مش هتنصر حد عليك حتي لو غلطت بس هتتعجن بعدها🤙♥️
+انا لسة باقية عليك و علينا (سوا) .</p>
+        <div class="letter-signature">نيرمين ❤</div>
+      </div>
+    </div>
+
+    <!-- Playlist Section -->
+    <section id="playlist-section">
+      <div class="playlist-tag">a playlist, just for you</div>
+      <h2>A playlist for you 🎵</h2>
+      <p class="playlist-sub">every song has a piece of what I feel</p>
+
+      <div class="anghami-box">
+        <div class="vinyl" id="vinyl-disc"></div>
+        <div class="anghami-title">Our Playlist 💌</div>
+        <div class="anghami-sub">on Anghami — especially for you</div>
+
+        <a class="anghami-btn" href="https://open.anghami.com/IdW8X9dNL5b" target="_blank" rel="noopener" id="anghamiBtn">
+          <div class="music-bars">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          Listen now 🎶
+        </a>
+      </div>
+    </section>
+
+    <!-- Video -->
+    <div class="video-section">
+      <div class="section-header" style="padding-top:0">
+        <p class="eyebrow" style="direction: ltr;">✦ a message ✦</p>
+        <h2 style="direction: ltr;">Watch <em>This</em> 🎬</h2>
+      </div>
+      <div class="video-wrapper">
+        <video controls loop>
+          <source src="koky.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <div class="footer">Made with ❤ · Just For You</div>
+  </section>
+
+  <!-- Wrong Answer Toast -->
+  <div class="toast-overlay" id="toastOverlay" onclick="closeToast()"></div>
+  <div class="wrong-toast" id="wrongToast">
+    <span class="wrong-toast-emoji">😡</span>
+    <p class="wrong-toast-text">طب مفييييش مفاجأة 😡</p>
+    <button class="wrong-toast-close" onclick="closeToast()">حاول تاني</button>
+  </div>
+
+  <!-- ═════════════════════════════════════
+       SCRIPTS
+  ═════════════════════════════════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    /* 1. Page navigation */
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    /* 2. Toast helpers */
+    function showToast() {
+      document.getElementById('wrongToast').classList.add('show');
+      document.getElementById('toastOverlay').classList.add('show');
+      const emoji = document.querySelector('.wrong-toast-emoji');
+      emoji.style.animation = 'none';
+      emoji.offsetHeight; 
+      emoji.style.animation = '';
+    }
+    function closeToast() {
+      document.getElementById('wrongToast').classList.remove('show');
+      document.getElementById('toastOverlay').classList.remove('show');
+    }
+
+    /* 3. Quiz logic (10 questions) */
+    const allQuestions = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10"];
+    
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        const label = this.closest('.option-label');
+        const siblings = document.querySelectorAll(`input[name="${this.name}"]`);
+        siblings.forEach(r => r.closest('.option-label').classList.remove('wrong-picked','correct-picked'));
+
+        if (this.value === 'wrong') {
+          label.classList.add('wrong-picked');
+          setTimeout(() => { this.checked = false; label.classList.remove('wrong-picked'); }, 800);
+          showToast();
+        } else {
+          label.classList.add('correct-picked');
+          checkAllCorrect();
+        }
+      });
+    });
+
+    function checkAllCorrect() {
+      const allDone = allQuestions.every(q => {
+        const checked = document.querySelector(`input[name="${q}"]:checked`);
+        return checked && checked.value === 'correct';
+      });
+      if (allDone) {
+        fireConfetti();
+        setTimeout(() => showPage('page-success'), 900);
+      }
+    }
+
+    function checkAnswers() {
+      const allDone = allQuestions.every(q => {
+        const checked = document.querySelector(`input[name="${q}"]:checked`);
+        return checked && checked.value === 'correct';
+      });
+      if (!allDone) {
+        document.getElementById("quiz-result").textContent = "جاوب على كل الأسئلة الصح الأول 🙏";
+      } else {
+        fireConfetti();
+        setTimeout(() => showPage('page-success'), 700);
+      }
+    }
+
+    /* 4. Confetti */
+    function fireConfetti() {
+      confetti({ particleCount: 220, spread: 170, origin: { y: 0.55 }, colors: ['#9e3060','#e8c5b8','#8b2252','#a06080','#c0506e'] });
+      setTimeout(() => confetti({ particleCount: 80, angle: 60, spread: 60, origin: { x: 0, y: 0.7 } }), 300);
+      setTimeout(() => confetti({ particleCount: 80, angle: 120, spread: 60, origin: { x: 1, y: 0.7 } }), 450);
+    }
+
+    /* 5. Counter Logic */
+    const relationStartDate = new Date('2026-04-11T00:00:00');
+    const countEls = {
+        d: document.getElementById('cnt-days'),
+        h: document.getElementById('cnt-hours'),
+        m: document.getElementById('cnt-mins'),
+        s: document.getElementById('cnt-secs')
+    };
+    let prevCnt = { d: -1, h: -1, m: -1, s: -1 };
+    
+    function updateRelationshipCounter() {
+        const diff = Date.now() - relationStartDate;
+        if(diff < 0) return; // Prevent negative time if opened before April 11, 2026
+
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        
+        if (d !== prevCnt.d) { animCounterNum(countEls.d, d); prevCnt.d = d; } 
+        if (h !== prevCnt.h) { animCounterNum(countEls.h, h); prevCnt.h = h; }
+        if (m !== prevCnt.m) { animCounterNum(countEls.m, m); prevCnt.m = m; } 
+        if (s !== prevCnt.s) { animCounterNum(countEls.s, s); prevCnt.s = s; }
+    }
+    
+    function animCounterNum(el, val) {
+        if(!el) return;
+        el.textContent = val;
+        el.classList.remove('flip-anim');
+        void el.offsetWidth; 
+        el.classList.add('flip-anim');
+    }
+    updateRelationshipCounter(); 
+    setInterval(updateRelationshipCounter, 1000);
+
+    /* 6. Playlist animation trigger */
+    document.getElementById('anghamiBtn').addEventListener('click', () => {
+      document.getElementById('vinyl-disc').classList.add('playing');
+    });
+  </script>
+
+</body>
+</html>
